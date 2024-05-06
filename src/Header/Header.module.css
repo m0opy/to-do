@@ -1,0 +1,123 @@
+.container {
+    margin-bottom: 12px;
+}
+
+.logo {
+    display: flex;
+    margin-bottom: 18px;
+    justify-content: center;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+}
+
+.search {
+    display: flex;
+    border: 1px solid #6C63FF;
+    border-radius: 5px;
+    height: 38px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+}
+
+.search:focus-within {
+    outline: 2px solid rgba(108, 99, 255, 0.4);
+}
+
+.search input:focus {
+    outline: none;
+}
+
+.search input::placeholder {
+    color: #C3C1E6;
+}
+
+.search_text {
+    width: 100%;
+    background-color: #F7F7F7;
+    color: #6C63FF;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+.search_btn {
+    border: none;
+    background-color: inherit;
+    padding: 0;
+    cursor: pointer;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.dropdown_btn {
+    min-width: 93px;
+    min-height: 38px;
+    background-color: #5850DD;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color: #F7F7F7;
+    border: none;
+    font-family: "Kanit", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 10px;
+    gap: 10px;
+    box-shadow: 0px 0px 4px 0px rgba(108, 99, 255, 1);
+}
+
+.dropdown_btn.main_btn_closed {
+    background-color: #534CC2;
+    border: 2px solid #6C63FF;
+    padding: 0 8px;
+    box-shadow: none;
+}
+
+.dropdown_btn_img {
+    margin-left: auto;
+}
+
+.dropdown_list {
+    position: absolute;
+    top: 100%;
+    left: none;
+    border-radius: 5px;
+    border: 1px solid #6C63FF;
+}
+
+.dropdown_item {
+    background-color: inherit;
+    width: 100%;
+    text-decoration: none;
+    text-align: left;
+    border: none;
+    height: 24px;
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    color: #6C63FF;
+    font-size: 16px;
+    line-height: 100%;
+}
+
+.dropdown_item:hover {
+    cursor: pointer;
+    background-color: rgba(108, 99, 255, 0.2);
+}
+
+.closed {
+    display: none;
+}
