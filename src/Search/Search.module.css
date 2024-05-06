@@ -1,0 +1,37 @@
+.search {
+    display: flex;
+    border: 1px solid #6C63FF;
+    border-radius: 5px;
+    height: 38px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+}
+
+.search:focus-within {
+    outline: 2px solid rgba(108, 99, 255, 0.4);
+}
+
+.search input:focus {
+    outline: none;
+}
+
+.search input::placeholder {
+    color: #C3C1E6;
+}
+
+.search_text {
+    width: 100%;
+    background-color: #F7F7F7;
+    color: #6C63FF;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+.search_btn {
+    border: none;
+    background-color: inherit;
+    padding: 0;
+    cursor: pointer;
+}
