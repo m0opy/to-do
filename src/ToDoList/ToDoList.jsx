@@ -1,18 +1,19 @@
+import TaskItem from '../TaskItem/TaskItem'
 import styles from './ToDoList.module.css'
 
-function ToDoList() {
+function ToDoList({ items, onEditItem, onEditCheckpointItem }) {
   return (
     <div className={styles.container}>
-      <ul>
-        <li>
-          <input type="checkbox" id="1" />
-          <label htmlFor="1">Заметка 1</label>
-        </li>
-        <li>
-          <input type="checkbox" id="2" />
-          <label htmlFor="2">Заметка 2</label>
-        </li>
-      </ul>
+      {items.map((el) => (
+        <TaskItem
+          key={el.id}
+          id={el.id}
+          text={el.text}
+          checkpoint={el.checkpoint}
+          onEditItem={onEditItem}
+          onEditCheckpointItem={onEditCheckpointItem}
+        />
+      ))}
     </div>
   )
 }

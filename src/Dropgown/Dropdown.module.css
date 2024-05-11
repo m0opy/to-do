@@ -23,6 +23,7 @@
     padding: 0 10px;
     gap: 10px;
     box-shadow: 0px 0px 4px 0px rgba(108, 99, 255, 1);
+    cursor: pointer;
 }
 
 .dropdown_btn.main_btn_closed {
@@ -46,7 +47,7 @@
 }
 
 .dropdown_item {
-    background-color: inherit;
+    background-color: #F7F7F7;
     width: 100%;
     text-decoration: none;
     text-align: left;
@@ -61,7 +62,7 @@
 
 .dropdown_item:hover {
     cursor: pointer;
-    background-color: rgba(108, 99, 255, 0.2);
+    background-color: rgba(216, 214, 255);
 }
 
 .closed {

@@ -1,0 +1,12 @@
+.theme_btn {
+    border: none;
+    background-color: #6C63FF;
+    padding: 8px 8px 4.5px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.theme_btn:hover {
+    background-color: #5850DD;
+    box-shadow: 0px 0px 4px 0px rgba(108, 99, 255, 1);
+}
