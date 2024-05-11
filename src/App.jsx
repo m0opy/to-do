@@ -22,7 +22,7 @@ function App() {
   }
 
   // В фунцию отправляется новый текст и id задачи. Обновляем исходный массив и отправляем его на LocalStorage
-  // Далее опрокидываем данный функционал в TaskItem. Условно: вытаскиваем необходимые данные.
+  // Далее опрокидываем данный функционал в TaskItem. Условно: вытаскиваем необходимые данные
   const editItem = (id, newText) => {
     const updatedItems = items.map((item) =>
       item.id === id ? { ...item, text: newText } : item

@@ -16,11 +16,12 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    /* padding: 7px 5px 7px 6px; */
+    transition: all 0.3s;
 }
 
 .check_btn.finished {
     background-color: #6C63FF;
+    transition: all 0.3s;
 }
 
 .finished_img {
@@ -70,6 +71,7 @@
 
 .edit_item:hover {
     background-image: url('/edit-active.svg');
+    transition: background-image 0.2s;
 }
 
 .delete_item {
@@ -78,6 +80,7 @@
 
 .delete_item:hover {
     background-image: url('/delete-active.svg');
+    transition: background-image 0.2s;
 }
 
 .list_item:hover .edit_item,
