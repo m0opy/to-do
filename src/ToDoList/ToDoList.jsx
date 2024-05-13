@@ -30,9 +30,17 @@ function ToDoList({
     return (
       <>
         {!darkTheme ? (
-          <img className={styles.empty_img} src="/empty.svg" alt="empty" />
+          <img
+            className={styles.empty_img}
+            src="/to-do/empty.svg"
+            alt="empty"
+          />
         ) : (
-          <img className={styles.empty_img} src="/empty-dark.svg" alt="empty" />
+          <img
+            className={styles.empty_img}
+            src="/to-do/empty-dark.svg"
+            alt="empty"
+          />
         )}
         <p
           className={classNames(styles['empty_text'], {

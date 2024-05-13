@@ -45,7 +45,7 @@ function TaskItem({
         })}
       >
         <img
-          src="/complete.svg"
+          src="/to-do/complete.svg"
           className={classNames(styles['complete_img'], {
             [styles['complete']]: finish,
           })}

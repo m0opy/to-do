@@ -5,13 +5,13 @@ function ThemeButton({ onChangeDarkTheme, darkTheme }) {
     <button onClick={onChangeDarkTheme} className={styles.theme_btn}>
       {!darkTheme ? (
         <img
-          src="/theme-dark.svg"
+          src="/to-do/theme-dark.svg"
           alt="dark"
           className={styles['dropdown_btn_img']}
         />
       ) : (
         <img
-          src="/theme-light.svg"
+          src="/to-do/theme-light.svg"
           alt="light"
           className={styles['dropdown_btn_img']}
         />

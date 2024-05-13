@@ -19,13 +19,13 @@ function Dropdown({ filter, setFilter }) {
         {filter}
         {!open ? (
           <img
-            src="/dropdown_btn-close.svg"
+            src="/to-do/dropdown_btn-close.svg"
             alt="close"
             className={styles.dropdown_btn_img}
           />
         ) : (
           <img
-            src="/dropdown_btn-open.svg"
+            src="/to-do/dropdown_btn-open.svg"
             alt="open"
             className={styles.dropdown_btn_img}
           />

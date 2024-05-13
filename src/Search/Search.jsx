@@ -23,9 +23,9 @@ function Search({ setSearchInputValue, searchInputValue, darkTheme }) {
       />
       <button className={styles.search_btn}>
         {!darkTheme ? (
-          <img src="/search.svg" alt="search" />
+          <img src="/to-do/search.svg" alt="search" />
         ) : (
-          <img src="/search-dark.svg" alt="search" />
+          <img src="/to-do/search-dark.svg" alt="search" />
         )}
       </button>
     </form>
