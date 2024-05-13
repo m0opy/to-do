@@ -25,6 +25,10 @@ function TaskItem({
   }
 
   const editItem = () => {
+    if (!inputValue) {
+      setInputValue(text)
+      return
+    }
     onEditItem(id, inputValue)
   }
 
