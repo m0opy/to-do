@@ -17,4 +17,9 @@
     line-height: 100%;
     display: flex;
     justify-content: center;
+    color: #252525;
+}
+
+.empty_text.dark {
+    color: #F7F7F7;
 }

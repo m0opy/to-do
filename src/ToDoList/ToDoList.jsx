@@ -1,5 +1,6 @@
 import TaskItem from '../TaskItem/TaskItem'
 import styles from './ToDoList.module.css'
+import classNames from 'classnames'
 
 function ToDoList({
   items,
@@ -28,8 +29,18 @@ function ToDoList({
   if (items.length === 0 || filteredItems.length === 0) {
     return (
       <>
-        <img className={styles.empty_img} src="/empty.svg" alt="empty" />
-        <p className={styles.empty_text}>Empty...</p>
+        {!darkTheme ? (
+          <img className={styles.empty_img} src="/empty.svg" alt="empty" />
+        ) : (
+          <img className={styles.empty_img} src="/empty-dark.svg" alt="empty" />
+        )}
+        <p
+          className={classNames(styles['empty_text'], {
+            [styles['dark']]: darkTheme,
+          })}
+        >
+          Empty...
+        </p>
       </>
     )
   }
