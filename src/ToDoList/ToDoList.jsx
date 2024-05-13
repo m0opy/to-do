@@ -7,8 +7,10 @@ function ToDoList({
   onEditCheckpointItem,
   onDeleteItem,
   filter,
+  searchText,
+  darkTheme,
 }) {
-  const filteredItems = items.filter((item) => {
+  let filteredItems = items.filter((item) => {
     if (filter === 'Complete') {
       return item.checkpoint
     } else if (filter === 'Incomplete') {
@@ -17,7 +19,13 @@ function ToDoList({
     return true
   })
 
-  if (items.length === 0) {
+  if (searchText) {
+    filteredItems = filteredItems.filter((item) =>
+      item.text.toLowerCase().includes(searchText.toLowerCase())
+    )
+  }
+
+  if (items.length === 0 || filteredItems.length === 0) {
     return (
       <>
         <img className={styles.empty_img} src="/empty.svg" alt="empty" />
@@ -37,6 +45,7 @@ function ToDoList({
           onEditItem={onEditItem}
           onEditCheckpointItem={onEditCheckpointItem}
           onDeleteItem={onDeleteItem}
+          darkTheme={darkTheme}
         />
       ))}
     </div>

@@ -1,5 +1,6 @@
 .container {
-    margin-bottom: 12px;
+    margin: 32px 0 12px;
+    text-align: center;
 }
 
 .nav {
@@ -7,4 +8,17 @@
     justify-content: center;
     gap: 16px;
     align-items: center;
+}
+
+.title {
+    font-size: 26px;
+    font-family: "Kanit", sans-serif;
+    font-weight: 500;
+    line-height: 39px;
+    text-transform: uppercase;
+    color: #252525;
+}
+
+.title.dark {
+    color: #F7F7F7;
 }

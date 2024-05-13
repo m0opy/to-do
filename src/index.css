@@ -3,6 +3,10 @@ html {
   background-color: #F7F7F7;
 }
 
+.dark-theme {
+  background-color: #252525;
+}
+
 *,
 *::after,
 *::before {

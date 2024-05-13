@@ -9,6 +9,7 @@ function TaskItem({
   onEditItem,
   onEditCheckpointItem,
   onDeleteItem,
+  darkTheme,
 }) {
   const [finish, setFinish] = useState(checkpoint)
   const [inputValue, setInputValue] = useState(text)
@@ -45,7 +46,9 @@ function TaskItem({
       >
         <img
           src="/complete.svg"
-          className={styles.complete_img}
+          className={classNames(styles['complete_img'], {
+            [styles['complete']]: finish,
+          })}
           alt="complete"
         />
       </button>
@@ -55,6 +58,7 @@ function TaskItem({
         onChange={handleInputChange}
         className={classNames(styles['text_item'], {
           [styles['complete']]: finish,
+          [styles['dark']]: darkTheme,
         })}
       />
       <button onClick={editItem} className={styles.edit_item}></button>

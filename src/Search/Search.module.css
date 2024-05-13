@@ -8,8 +8,16 @@
     width: 100%;
 }
 
+.search.dark {
+    border: 1px solid #F7F7F7;
+}
+
 .search:focus-within {
     outline: 2px solid rgba(108, 99, 255, 0.4);
+}
+
+.search.dark:focus-within {
+    outline: 2px solid rgba(255, 255, 255, 0.4);
 }
 
 .search input:focus {
@@ -20,6 +28,10 @@
     color: #C3C1E6;
 }
 
+.search.dark input::placeholder {
+    color: #666666;
+}
+
 .search_text {
     width: 100%;
     background-color: #F7F7F7;
@@ -27,6 +39,11 @@
     border: none;
     font-family: "Inter", sans-serif;
     font-weight: 500;
+}
+
+.search_text.dark {
+    background-color: #252525;
+    color: #F7F7F7;
 }
 
 .search_btn {
