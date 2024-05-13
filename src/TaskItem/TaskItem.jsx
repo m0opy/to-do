@@ -2,7 +2,14 @@ import styles from './TaskItem.module.css'
 import classNames from 'classnames'
 import { useState } from 'react'
 
-function TaskItem({ id, text, checkpoint, onEditItem, onEditCheckpointItem }) {
+function TaskItem({
+  id,
+  text,
+  checkpoint,
+  onEditItem,
+  onEditCheckpointItem,
+  onDeleteItem,
+}) {
   const [finish, setFinish] = useState(checkpoint)
   const [inputValue, setInputValue] = useState(text)
 
@@ -20,18 +27,26 @@ function TaskItem({ id, text, checkpoint, onEditItem, onEditCheckpointItem }) {
     onEditItem(id, inputValue)
   }
 
+  const deleteItem = () => {
+    onDeleteItem(id)
+  }
+
   return (
-    <div className={styles['list_item']}>
+    <div
+      className={classNames(styles['list_item'], {
+        [styles['complete']]: finish,
+      })}
+    >
       <button
         onClick={checkItem}
         className={classNames(styles['check_btn'], {
-          [styles['finished']]: finish,
+          [styles['complete']]: finish,
         })}
       >
         <img
-          src="/finished.svg"
-          className={styles.finished_img}
-          alt="finished"
+          src="/complete.svg"
+          className={styles.complete_img}
+          alt="complete"
         />
       </button>
       <input
@@ -39,11 +54,11 @@ function TaskItem({ id, text, checkpoint, onEditItem, onEditCheckpointItem }) {
         value={inputValue}
         onChange={handleInputChange}
         className={classNames(styles['text_item'], {
-          [styles['finished']]: finish,
+          [styles['complete']]: finish,
         })}
       />
       <button onClick={editItem} className={styles.edit_item}></button>
-      <button className={styles.delete_item}></button>
+      <button onClick={deleteItem} className={styles.delete_item}></button>
     </div>
   )
 }

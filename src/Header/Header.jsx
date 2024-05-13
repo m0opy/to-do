@@ -4,13 +4,13 @@ import Search from '../Search/Search'
 import Dropdown from '../Dropgown/Dropdown'
 import ThemeButton from '../ThemeButton/ThemeButton'
 
-function Header() {
+function Header({ filter, onChangeFilter }) {
   return (
     <div className={styles.container}>
       <Logo />
       <div className={styles.nav}>
         <Search></Search>
-        <Dropdown></Dropdown>
+        <Dropdown filter={filter} setFilter={onChangeFilter} />
         <ThemeButton />
       </div>
     </div>

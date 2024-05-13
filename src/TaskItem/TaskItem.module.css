@@ -19,12 +19,12 @@
     transition: all 0.3s;
 }
 
-.check_btn.finished {
+.check_btn.complete {
     background-color: #6C63FF;
     transition: all 0.3s;
 }
 
-.finished_img {
+.complete_img {
     display: flex;
     margin-bottom: 3px;
 }
@@ -46,7 +46,7 @@
     outline: none;
 }
 
-.text_item.finished {
+.text_item.complete {
     font-family: "Kanit", sans-serif;
     font-weight: 400;
     color: rgb(146, 146, 146);

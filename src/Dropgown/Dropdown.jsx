@@ -2,9 +2,8 @@ import styles from './Dropdown.module.css'
 import { useState } from 'react'
 import classNames from 'classnames'
 
-function Dropdown() {
+function Dropdown({ filter, setFilter }) {
   const [open, setOpen] = useState(false)
-  const [filter, setFilter] = useState('All')
 
   const openMenu = () => {
     setOpen(!open)

@@ -7,6 +7,7 @@ import { useEffect } from 'react'
 function App() {
   // Изначально пустой массив
   const [items, setItems] = useState([])
+  const [filter, setFilter] = useState('All')
 
   // С помощью useEffect (1 раз) считываем массив! из LocalStorage
   useEffect(() => {
@@ -39,13 +40,25 @@ function App() {
     saveItemsToLocalStorage(updatedItems)
   }
 
+  const onChangeFilter = (newFilter) => {
+    setFilter(newFilter)
+  }
+
+  const deleteItem = (id) => {
+    const updatedItems = items.filter((item) => item.id !== id)
+    setItems(updatedItems)
+    saveItemsToLocalStorage(updatedItems)
+  }
+
   return (
     <div className="container">
-      <Header></Header>
+      <Header filter={filter} onChangeFilter={onChangeFilter} />
       <ToDoList
         items={items}
         onEditItem={editItem}
         onEditCheckpointItem={editCheckpointItem}
+        onDeleteItem={deleteItem}
+        filter={filter}
       />
     </div>
   )
