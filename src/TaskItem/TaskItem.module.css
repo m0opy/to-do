@@ -81,7 +81,7 @@
 
 .edit_item:hover {
     background-image: url('/edit-active.svg');
-    transition: background-image 0.2s;
+    /* transition: background-image 0.2s; */
 }
 
 .delete_item {
@@ -90,7 +90,7 @@
 
 .delete_item:hover {
     background-image: url('/delete-active.svg');
-    transition: background-image 0.2s;
+    /* transition: background-image 0.2s; */
 }
 
 .list_item:hover .edit_item,
