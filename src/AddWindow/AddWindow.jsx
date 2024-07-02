@@ -1,5 +1,6 @@
 import styles from './AddWindow.module.css'
 import classNames from 'classnames'
+import { useRef } from 'react'
 
 function AddWindow({
   show,
@@ -11,6 +12,8 @@ function AddWindow({
   onChangeValue,
   darkTheme,
 }) {
+  const inputRef = useRef()
+
   const handleInputChange = (event) => {
     onChangeValue(event.target.value)
   }
@@ -21,6 +24,7 @@ function AddWindow({
     const fromProps = Object.fromEntries(formData)
     if (!fromProps.text?.trim().length) {
       onChangeValid(false)
+      inputRef.current.focus()
       return
     }
     onChangeValid(true)
@@ -57,6 +61,7 @@ function AddWindow({
             name="text"
             value={inputValue}
             onChange={handleInputChange}
+            ref={inputRef}
             className={classNames(styles['add_input'], {
               [styles['invalid']]: !valid,
               [styles['dark']]: darkTheme,

@@ -4,17 +4,28 @@ import ToDoList from './ToDoList/ToDoList'
 import AddItemButton from './AddItemButton/AddItemButton'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useLocalStorage } from './hooks/use-localstorage.hooks'
 import AddWindow from './AddWindow/AddWindow'
 
 function App() {
   // Изначально пустой массив
-  const [items, setItems] = useState([])
+  // const [items, setItems] = useState([])
   const [filter, setFilter] = useState('All')
   const [showAddNote, setShowAddNote] = useState(false)
   const [validInput, setValidInput] = useState(true)
   const [addInputValue, setAddInputValue] = useState('')
   const [searchText, setSearchText] = useState('')
   const [darkTheme, setDarkTheme] = useState(false)
+  const [items, saveItems] = useLocalStorage('data')
+
+  function mapItems(items) {
+    if (!items) {
+      return []
+    }
+    return items.map((i) => ({
+      ...i,
+    }))
+  }
 
   useEffect(() => {
     // Установка класса для элемента html в зависимости от состояния darkTheme
@@ -25,35 +36,22 @@ function App() {
     }
   }, [darkTheme])
 
-  // С помощью useEffect (1 раз) считываем массив! из LocalStorage
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem('data'))
-    if (data) {
-      setItems(data)
-    }
-  }, [])
-
-  // Обновляем LocalStorage
-  const saveItemsToLocalStorage = (items) => {
-    localStorage.setItem('data', JSON.stringify(items))
-  }
-
   // В фунцию отправляется новый текст и id задачи. Обновляем исходный массив и отправляем его на LocalStorage
   // Далее опрокидываем данный функционал в TaskItem. Условно: вытаскиваем необходимые данные
   const editItem = (id, newText) => {
     const updatedItems = items.map((item) =>
       item.id === id ? { ...item, text: newText } : item
     )
-    setItems(updatedItems)
-    saveItemsToLocalStorage(updatedItems)
+    // setItems(updatedItems)
+    saveItems(updatedItems)
   }
 
   const editCheckpointItem = (id, newCheckpoint) => {
     const updatedItems = items.map((item) =>
       item.id === id ? { ...item, checkpoint: newCheckpoint } : item
     )
-    setItems(updatedItems)
-    saveItemsToLocalStorage(updatedItems)
+    // setItems(updatedItems)
+    saveItems(updatedItems)
   }
 
   const onChangeFilter = (newFilter) => {
@@ -62,8 +60,8 @@ function App() {
 
   const deleteItem = (id) => {
     const updatedItems = items.filter((item) => item.id !== id)
-    setItems(updatedItems)
-    saveItemsToLocalStorage(updatedItems)
+    // setItems(updatedItems)
+    saveItems(updatedItems)
   }
 
   const setShow = () => {
@@ -73,16 +71,13 @@ function App() {
   }
 
   const addItem = (item) => {
-    setItems((oldItems) => {
-      const newItem = {
+    saveItems([
+      ...mapItems(items),
+      {
         text: item.text,
-        id:
-          oldItems.length > 0 ? Math.max(...oldItems.map((i) => i.id)) + 1 : 1,
-      }
-      const newItems = [...oldItems, newItem]
-      saveItemsToLocalStorage(newItems)
-      return newItems
-    })
+        id: items.length > 0 ? Math.max(...items.map((i) => i.id)) + 1 : 1,
+      },
+    ])
   }
 
   const changeDarkTheme = () => {
