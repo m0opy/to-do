@@ -1,6 +1,7 @@
 import styles from './AddWindow.module.css'
 import classNames from 'classnames'
-import { useRef } from 'react'
+import { useContext, useRef } from 'react'
+import { ThemeContext } from '../context/theme.context'
 
 function AddWindow({
   show,
@@ -10,8 +11,8 @@ function AddWindow({
   onChangeValid,
   inputValue,
   onChangeValue,
-  darkTheme,
 }) {
+  const { themeId } = useContext(ThemeContext)
   const inputRef = useRef()
 
   const handleInputChange = (event) => {
@@ -41,18 +42,18 @@ function AddWindow({
       <div className={styles.modal_backdrop}></div>
       <div
         className={classNames(styles['add_container'], {
-          [styles['dark']]: darkTheme,
+          [styles['dark']]: themeId === 2,
         })}
       >
         <form
           className={classNames(styles['add_form'], {
-            [styles['dark']]: darkTheme,
+            [styles['dark']]: themeId === 2,
           })}
           onSubmit={addToDoItem}
         >
           <p
             className={classNames(styles['add_title'], {
-              [styles['dark']]: darkTheme,
+              [styles['dark']]: themeId === 2,
             })}
           >
             New note
@@ -64,7 +65,7 @@ function AddWindow({
             ref={inputRef}
             className={classNames(styles['add_input'], {
               [styles['invalid']]: !valid,
-              [styles['dark']]: darkTheme,
+              [styles['dark']]: themeId === 2,
             })}
             placeholder="Input your note..."
             type="text"

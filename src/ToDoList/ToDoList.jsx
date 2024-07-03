@@ -1,6 +1,8 @@
 import TaskItem from '../TaskItem/TaskItem'
 import styles from './ToDoList.module.css'
 import classNames from 'classnames'
+import { ThemeContext } from '../context/theme.context'
+import { useContext } from 'react'
 
 function ToDoList({
   items,
@@ -9,8 +11,9 @@ function ToDoList({
   onDeleteItem,
   filter,
   searchText,
-  darkTheme,
 }) {
+  const { themeId } = useContext(ThemeContext)
+
   let filteredItems = items.filter((item) => {
     if (filter === 'Complete') {
       return item.checkpoint
@@ -29,7 +32,7 @@ function ToDoList({
   if (items.length === 0 || filteredItems.length === 0) {
     return (
       <>
-        {!darkTheme ? (
+        {themeId === 1 ? (
           <img
             className={styles.empty_img}
             src="/to-do/empty.svg"
@@ -44,7 +47,7 @@ function ToDoList({
         )}
         <p
           className={classNames(styles['empty_text'], {
-            [styles['dark']]: darkTheme,
+            [styles['dark']]: themeId === 2,
           })}
         >
           Empty...
@@ -64,7 +67,6 @@ function ToDoList({
           onEditItem={onEditItem}
           onEditCheckpointItem={onEditCheckpointItem}
           onDeleteItem={onDeleteItem}
-          darkTheme={darkTheme}
         />
       ))}
     </div>

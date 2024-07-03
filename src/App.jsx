@@ -2,10 +2,12 @@ import './App.css'
 import Header from './Header/Header'
 import ToDoList from './ToDoList/ToDoList'
 import AddItemButton from './AddItemButton/AddItemButton'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useEffect } from 'react'
 import { useLocalStorage } from './hooks/use-localstorage.hooks'
 import AddWindow from './AddWindow/AddWindow'
+import { ThemeContextProvider } from './context/theme.context'
+import { ThemeContext } from './context/theme.context'
 
 function App() {
   // Изначально пустой массив
@@ -17,6 +19,7 @@ function App() {
   const [searchText, setSearchText] = useState('')
   const [darkTheme, setDarkTheme] = useState(false)
   const [items, saveItems] = useLocalStorage('data')
+  const { themeId } = useContext(ThemeContext)
 
   function mapItems(items) {
     if (!items) {
@@ -29,12 +32,13 @@ function App() {
 
   useEffect(() => {
     // Установка класса для элемента html в зависимости от состояния darkTheme
-    if (darkTheme) {
+    if (themeId === 2) {
       document.documentElement.classList.add('dark-theme')
     } else {
       document.documentElement.classList.remove('dark-theme')
     }
-  }, [darkTheme])
+    console.log(themeId)
+  }, [themeId])
 
   // В фунцию отправляется новый текст и id задачи. Обновляем исходный массив и отправляем его на LocalStorage
   // Далее опрокидываем данный функционал в TaskItem. Условно: вытаскиваем необходимые данные
@@ -80,9 +84,9 @@ function App() {
     ])
   }
 
-  const changeDarkTheme = () => {
-    setDarkTheme(!darkTheme)
-  }
+  // const changeDarkTheme = () => {
+  //   setDarkTheme(!darkTheme)
+  // }
 
   return (
     <div className="container">
@@ -91,8 +95,6 @@ function App() {
         onChangeFilter={onChangeFilter}
         onSearchChange={setSearchText}
         searchText={searchText}
-        onChangeDarkTheme={changeDarkTheme}
-        darkTheme={darkTheme}
       />
       <ToDoList
         items={items}
@@ -101,7 +103,6 @@ function App() {
         onDeleteItem={deleteItem}
         filter={filter}
         searchText={searchText}
-        darkTheme={darkTheme}
       />
       <AddItemButton onChangeShow={setShow} />
       <AddWindow
@@ -112,10 +113,15 @@ function App() {
         onChangeValid={setValidInput}
         inputValue={addInputValue}
         onChangeValue={setAddInputValue}
-        darkTheme={darkTheme}
       />
     </div>
   )
 }
 
-export default App
+export default function WrappedApp() {
+  return (
+    <ThemeContextProvider>
+      <App />
+    </ThemeContextProvider>
+  )
+}

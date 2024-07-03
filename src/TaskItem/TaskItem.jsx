@@ -1,6 +1,7 @@
 import styles from './TaskItem.module.css'
 import classNames from 'classnames'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { ThemeContext } from '../context/theme.context'
 
 function TaskItem({
   id,
@@ -9,8 +10,8 @@ function TaskItem({
   onEditItem,
   onEditCheckpointItem,
   onDeleteItem,
-  darkTheme,
 }) {
+  const { themeId } = useContext(ThemeContext)
   const [finish, setFinish] = useState(checkpoint)
   const [inputValue, setInputValue] = useState(text)
 
@@ -62,7 +63,7 @@ function TaskItem({
         onChange={handleInputChange}
         className={classNames(styles['text_item'], {
           [styles['complete']]: finish,
-          [styles['dark']]: darkTheme,
+          [styles['dark']]: themeId === 2,
         })}
       />
       <button onClick={editItem} className={styles.edit_item}></button>
